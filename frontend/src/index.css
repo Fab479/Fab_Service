@@ -1,0 +1,349 @@
+html, body, #root {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  color: #ffffff;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  margin: 0 auto;
+
+  /* bright plum base gradient */
+  background:
+    radial-gradient(1200px 800px at 15% 10%, #1f0243 0%, transparent 60%),
+    radial-gradient(1000px 700px at 85% 90%, #0d022a 0%, transparent 60%),
+    radial-gradient(900px 700px at 50% 50%, #1e012f 0%, transparent 70%),
+    linear-gradient(135deg, #2a023e 0%, #5e039a 45%, #7e22ce 100%);
+  background-attachment: fixed;
+  background-size: cover;
+
+  position: relative;
+  overflow-x: hidden;
+  isolation: isolate;
+}
+
+main {
+  width: 100%;
+  max-width: 1200px;
+  margin: 70px auto 0 auto;;
+  padding: 20px 30px;
+  box-sizing: border-box;
+}
+/* big glowing plum orbs */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  width: 60vmax;
+  height: 60vmax;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.75;
+  pointer-events: none;
+  z-index: -2;
+}
+
+body::before {
+  background: #210315;   /* hot plum pink */
+  top: -25vmax;
+  left: -20vmax;
+  animation: drift1 16s ease-in-out infinite;
+}
+
+body::after {
+  background: #b026ff;   /* bright violet */
+  bottom: -25vmax;
+  right: -20vmax;
+  animation: drift2 20s ease-in-out infinite;
+}
+
+/* soft light bloom + subtle grid for depth */
+#root::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+
+}
+
+@keyframes drift1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(7vmax, 5vmax) scale(1.1); }
+}
+
+@keyframes drift2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(-7vmax, -5vmax) scale(1.12); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  body::after { animation: none; }
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-inline: 1px solid var(--border);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+   
+}
+:root{
+  --nav-gap: 40px;
+}
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+.aim{
+  font-size: 160px;
+  letter-spacing: -1.68px;
+  margin: 100px auto 0 auto;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  letter-spacing: 10px;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+p {
+  margin: 0;
+}
+footer{
+  max-width: 100%;
+  backdrop-filter: blur(30px);
+}
+.footer-link{
+  display: flex;
+  flex-direction: column;
+}
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}
+input{
+  border-radius: 10px;
+  padding: 14px 18px;
+  color: rgb(246, 244, 244);
+  background-color: transparent;
+  border-bottom: 3px solid white;
+}
+
+form{
+  border: 1px solid #e66909;
+  border-radius: 8px;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin: 0 auto;
+  padding: 15px 18px;
+  line-height: 15vh;
+  gap: 8px;
+  backdrop-filter: blur(40px);
+  box-shadow: 0px 0px 30px rgb(173, 171, 171);
+}
+textarea{
+  background-color: transparent;
+}
+button{
+  border-radius: 8px;
+  width: 30%;
+  padding: 12px 15px;
+  background: none;
+  margin: 0 auto;
+  color: rgb(252, 252, 252);
+  border: 1px solid rgb(253, 252, 253);
+}
+button:hover{
+  cursor: pointer;
+  background-color: #f9f7f7;
+  color: #260101;
+}
+.profile{
+  display: flex;
+    max-width: 100%;
+    justify-content: space-between;
+    text-align: justify;
+    gap: 15px;
+    color: #f3f4f6;
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: #e5e4e7;
+}
+fieldset{
+  gap: 0px;
+  line-height: 28px;
+  margin: 50px auto 0 auto;
+  font-family:'Times New Roman', Times, serif
+}
+legend{
+  font-weight: bolder;
+  letter-spacing: 4px;
+  font-size: 29px;
+}
+
+.services-container{
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  gap: 20px;
+  width: 60%;
+  height: 20vh;
+  
+}
+.logo{
+  mix-blend-mode:lighten;
+  
+}
+.price{
+  width: auto;
+}
+.service-card{
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+a{
+  text-decoration: none;
+  padding: 15px 18px;
+  color: #0e022b;
+ margin: 0 auto;
+ font-weight: bolder;
+ 
+
+}
+.service{
+  width: 80%;
+  
+}
+a:hover{
+  background-color: none;
+  cursor: pointer;
+  text-decoration: underline;
+}
+a:active{
+  text-decoration: underline;
+}
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 10px;
+  text-decoration: none;
+  gap: 8px;
+  background-color: #e5e4e7;
+  box-sizing: border-box;
+  position: fixed;
+  z-index: 1000;
+}
+@media (max-width: 450px) {
+  .navbar {           
+    display: flex;
+    flex-wrap: wrap;
+    max-width: fit-content;
+    background-color: transparent;
+    position: relative;
+
+  
+   
+  }
+  .nav-links{
+    max-width: 1200px;
+    border: white;
+     max-width: 1200px;
+  margin: 0 auto 40% auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  flex-direction: column;
+
+  }
+  img{
+    visibility: hidden;
+  }
+   .nav-links a {
+     max-width: 1200px;
+   margin: 0 auto var(--nav-gap) auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  color: white;
+    
+  }
+
+  .services-container{
+   flex-direction: column;    
+    align-items: stretch;      
+    width: 100%;
+    gap: 12px;
+    height: auto;
+
+    }
+      .service-card {
+    flex: none;
+    height: auto;                
+    
+    
+  }
+  .profile{
+    flex-wrap: wrap;
+  }
+  h1{
+    font-size: 25px;
+  }
+}
+.btn{
+  color: rgb(251, 251, 251);
+  border: none;
+  border-radius: 15px;
+  width: auto;
+  height: 6vh;
+}
+.btn:hover{
+  cursor: pointer;
+  background-color: transparent;
+  color: white;
+}
